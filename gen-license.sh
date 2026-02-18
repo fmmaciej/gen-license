@@ -24,8 +24,7 @@ Usage:
 Options:
   -o, --output <file>   Output filename (default: LICENSE)
   -t, --templates <dir> Templates directory (default: ./templates next to script)
-  -c, --config <file>   Config file path (default: ./config.sh next to script)
-      --dry-run         Print to stdout instead of writing file
+  -d, --dry-run         Print to stdout instead of writing file
   -l, --list            List available templates
   -h, --help            Show help
 
@@ -73,13 +72,7 @@ parse_args() {
             shift 2
             ;;
 
-        -c|--config)
-            [[ $# -ge 2 ]] || die "Missing value for $1"
-            CONFIG_FILE="$2"
-            shift 2
-            ;;
-
-        --dry-run)
+        -d|--dry-run)
             DRY_RUN=1
             shift
             ;;
