@@ -112,8 +112,8 @@ parse_args() {
 }
 
 load_config() {
-    TEMPLATE_FILE="$TEMPLATES_DIR/$LICENSE_ID"
-    [[ -f "$TEMPLATE_FILE" ]] || die "Template not found: $TEMPLATE_FILE (use --list)"
+    TEMPLATE_FILE="$TEMPLATES_DIR/$LICENSE_ID.in"
+    [[ -f "$TEMPLATE_FILE" ]] || die "Template file not found: $TEMPLATE_FILE (use --list)"
 
     [[ -f "$CONFIG_FILE" ]] || die "Config not found: $CONFIG_FILE"
 
@@ -144,7 +144,6 @@ esc_sed() {
 render() {
     local tf
     tf="$(template_path)"
-    echo $tf
     [[ -f "$tf" ]] || die "Template not found: $tf (use --list)"
 
     sed \
