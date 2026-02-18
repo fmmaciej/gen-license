@@ -39,20 +39,21 @@ EOF
 }
 
 list_templates() {
-  if [[ ! -d "$TEMPLATES_DIR" ]]; then
-    echo "Templates dir not found: $TEMPLATES_DIR" >&2
-    exit 1
-  fi
+    if [[ ! -d "$TEMPLATES_DIR" ]]; then
+        echo "Templates dir not found: $TEMPLATES_DIR" >&2
+        exit 1
+    fi
 
-  # Show filenames without extension
-  find "$TEMPLATES_DIR" -maxdepth 1 -type f -name '*.in' -printf '%f\n' \
-    | sed 's/\.in$//' \
-    | sort
+    local f
+    for f in "$TEMPLATES_DIR"/*.in; do
+        [[ -e "$f" ]] || return 0
+        basename "$f" .in
+    done | sort
 }
 
 die() {
-  echo "Error: $*" >&2
-  exit 1
+    echo "Error: $*" >&2
+    exit 1
 }
 
 parse_args() {
@@ -143,6 +144,7 @@ esc_sed() {
 render() {
     local tf
     tf="$(template_path)"
+    echo $tf
     [[ -f "$tf" ]] || die "Template not found: $tf (use --list)"
 
     sed \
