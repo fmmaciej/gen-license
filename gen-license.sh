@@ -2,13 +2,13 @@
 
 set -euo pipefail
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+INSTALL_DIR="$HOME/.local/share/gen-license"
 
 # Defaults
 OUTPUT_FILE="LICENSE"
 DRY_RUN=0
-TEMPLATES_DIR="${TEMPLATES_DIR:-$SCRIPT_DIR/templates}"
-CONFIG_FILE="${CONFIG_FILE:-$SCRIPT_DIR/config.sh}"
+TEMPLATES_DIR="${TEMPLATES_DIR:-$INSTALL_DIR/templates}"
+CONFIG_FILE="${CONFIG_FILE:-$INSTALL_DIR/config.sh}"
 LICENSE_ID=""
 
 FULL_NAME=""
