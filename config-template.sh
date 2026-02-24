@@ -3,9 +3,9 @@
 # shellcheck disable=SC2034
 
 # Required
-FULL_NAME="Maciej"
+FULL_NAME=""
 
 # Optional
-EMAIL="maciej@fmmaciej.com"
+EMAIL=""
 ORGANIZATION=""
-YEAR="2026"
+YEAR=""
